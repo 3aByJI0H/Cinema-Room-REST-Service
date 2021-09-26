@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.BiConsumer;
 
-public class CinemaHall {
+class CinemaHall {
     private final int totalRows;
     private final int totalColumns;
     private final List<Seat> seats;
 
-    public CinemaHall(int totalRows, int totalColumns) {
+    CinemaHall(int totalRows, int totalColumns) {
         this.totalRows = totalRows;
         this.totalColumns = totalColumns;
         this.seats = initSeats(totalRows * totalColumns);
@@ -20,7 +20,7 @@ public class CinemaHall {
         forEach( (row, col) -> newSeats.add( new Seat(row, col) ) );
         return newSeats;
     }
-    public void forEach(BiConsumer<Integer, Integer> consumer) {
+    void forEach(BiConsumer<Integer, Integer> consumer) {
         for (int row = 1; row <= totalRows; row++) {
             for (int col = 1; col <= totalColumns; col++) {
                 consumer.accept(row, col);
@@ -31,15 +31,15 @@ public class CinemaHall {
         return (row-1) * totalColumns + (column-1);
     }
 
-    public int getTotalRows() {
+    int getTotalRows() {
         return totalRows;
     }
 
-    public int getTotalColumns() {
+    int getTotalColumns() {
         return totalColumns;
     }
 
-    public Seat getSeat(int row, int col) {
+    Seat getSeat(int row, int col) {
         return seats.get( flattenIndex(row, col) );
     }
 }

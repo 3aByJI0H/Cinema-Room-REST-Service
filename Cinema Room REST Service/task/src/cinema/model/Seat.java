@@ -1,34 +1,34 @@
 package cinema.model;
 
-public class Seat {
+class Seat {
     private final int price;
     private final int row;
     private final int column;
     private boolean available = true;
 
-    public boolean isAvailable() {
+    boolean isAvailable() {
         return available;
     }
 
-    public int getPrice() {
+    int getPrice() {
         return price;
     }
 
-    public int getRow() {
+    int getRow() {
         return row;
     }
 
-    public int getColumn() {
+    int getColumn() {
         return column;
     }
 
-    public Seat(int row, int column) {
+    Seat(int row, int column) {
         this.row = row;
         this.column = column;
         this.price = (row <= 4) ? 10 : 8;
     }
 
-    public synchronized boolean setAvailable(boolean value) {
+    synchronized boolean setAvailable(boolean value) {
         boolean isSuccessful = available != value;
         if (isSuccessful)
             available = value;
