@@ -3,6 +3,8 @@ package cinema.model;
 import cinema.dtos.CinemaStats;
 import cinema.dtos.PurchaseResponse;
 import cinema.dtos.SeatDto;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,11 +12,12 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
+@Service
 public class Cinema {
     private final CinemaHall cinemaHall;
     private final Map<UUID, Seat> tokenToSeat = new ConcurrentHashMap<>();
 
-    public Cinema(int totalRows, int totalColumns) {
+    public Cinema(@Value("9") int totalRows, @Value("9") int totalColumns) {
         cinemaHall = new CinemaHall(totalRows, totalColumns);
     }
 
